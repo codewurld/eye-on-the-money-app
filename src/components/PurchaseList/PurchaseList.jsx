@@ -1,5 +1,15 @@
 
+import { useContext } from "react";
+import { GlobalContext } from "../../context/context";
+
+
 const PurchaseList = () => {
+
+    // get access and pull information from context file
+    const context = useContext(GlobalContext);
+
+    console.log(context);
+
     return (
         <>
             <h3>History</h3>
