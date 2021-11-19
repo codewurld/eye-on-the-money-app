@@ -29,6 +29,7 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // Actions
+
     // payload is any data we want to send to our reducer
     // pass reducer in AppReducer.js file
     function deleteTransaction(id) {
@@ -38,11 +39,20 @@ export const GlobalProvider = ({ children }) => {
         });
     }
 
+    function addTransaction(transaction) {
+        dispatch({
+            type: 'ADD_TRANSACTION',
+            payload: transaction
+        });
+    }
+
+
     // in order to get access to reducer functions, it must passed in Provider
 
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
-        deleteTransaction
+        deleteTransaction,
+        addTransaction
     }}>
         {children}
     </GlobalContext.Provider>)
