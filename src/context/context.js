@@ -10,6 +10,9 @@ const initialState = {
         { id: 2, text: "Rent", amount: -900 },
         { id: 3, text: "Salary", amount: 4000 },
         { id: 4, text: "Spotify Subscription", amount: -9.99 },
+        { id: 5, text: "Nando's Restaurant", amount: -17.59 },
+        { id: 6, text: "AirBnB Receipt", amount: 389.37 },
+        { id: 7, text: "Ryanair", amount: -42.89 },
     ]
 }
 
