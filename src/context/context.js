@@ -3,6 +3,7 @@ import AppReducer from "./AppReducer";
 
 // initial state
 // transaction using dummy data - to perform calculations, i.e balance
+// using useContext in other components, we can destructure and extract anything we want from our initial state, i.e. transactions..
 
 const initialState = {
     transactions: [
@@ -27,8 +28,21 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
+    // Actions
+    // payload is any data we want to send to our reducer
+    // pass reducer in AppReducer.js file
+    function deleteTransaction(id) {
+        dispatch({
+            type: 'DELETE_TRANSACTION',
+            payload: id
+        });
+    }
+
+    // in order to get access to reducer functions, it must passed in Provider
+
     return (<GlobalContext.Provider value={{
-        transactions: state.transactions
+        transactions: state.transactions,
+        deleteTransaction
     }}>
         {children}
     </GlobalContext.Provider>)
