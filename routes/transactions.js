@@ -9,14 +9,12 @@ const { getTransactions, addTransactions, deleteTransactions } = require('../con
 // when GET/POST request is made to route / call getTransactions/addTransactions controller
 router
     .route('/')
-    .get(getTransactions)
-    .post(addTransactions);
-
+    .get(getTransactions);
 
 // delete request requires id to determine which transaction to delete
-router
-    .route('/:id')
-    .delete(deleteTransactions)
+// router
+//     .route('/:id')
+//     .delete(deleteTransactions)
 
 // to get access to router globally
 module.exports = router;

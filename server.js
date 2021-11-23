@@ -20,7 +20,7 @@ const app = express()
 app.use('/api/v1/transactions', transactions);
 
 // connect to port or 5000 in case port can't be found
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // run the server
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.green.bold));
