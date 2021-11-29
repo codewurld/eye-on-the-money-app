@@ -23,6 +23,10 @@ const app = express()
 // initialize body parser in controller
 app.use(express.json());
 
+if (process.env.NONDE_ENV === "development") {
+    app.use(morgan('dev'));
+}
+
 // connect transactions route when request is made to URL below
 app.use('/api/v1/transactions', transactions);
 

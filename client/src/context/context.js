@@ -1,12 +1,15 @@
 import { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import axios from 'axios';
 
 // initial state
 // transaction using dummy data - to perform calculations, i.e balance
 // using useContext in other components, we can destructure and extract anything we want from our initial state, i.e. transactions..
 
 const initialState = {
-    transactions: []
+    transactions: [],
+    error: null,
+    loading: true
 }
 
 // useContext to avoid pop drilling
@@ -21,6 +24,29 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // Actions
+
+    // connect front end with backend
+    // similar to GET request on Postman 
+    async function getTransactions() {
+        try {
+            // fetch from API
+            const response = await axios.get('/api/v1/transactions');
+
+            // get transaction object from response
+            // send into state
+            dispatch({
+                type: 'GET_TRANSACTIONS',
+                payload: response.data.data
+            })
+
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            })
+        }
+    }
+
 
     // payload is any data we want to send to our reducer
     // pass reducer in AppReducer.js file
@@ -43,6 +69,9 @@ export const GlobalProvider = ({ children }) => {
 
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
+        error: state.error,
+        loading: state.loading,
+        getTransactions,
         deleteTransaction,
         addTransaction
     }}>

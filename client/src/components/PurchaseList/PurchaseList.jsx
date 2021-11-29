@@ -1,5 +1,5 @@
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/context";
 import Transaction from "../Transaction/Transaction";
 
@@ -8,7 +8,11 @@ const PurchaseList = () => {
 
 
     // get access and pull information from context file
-    const { transactions } = useContext(GlobalContext);
+    const { transactions, getTransactions } = useContext(GlobalContext);
+
+    useEffect(() => {
+        getTransactions();
+    }, [])
 
     // Passed Transaction component needs to have unique key and prop from transactions in context
 
