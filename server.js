@@ -21,7 +21,7 @@ const transactions = require('./routes/transactions')
 const app = express()
 
 // initialize body parser in controller
-app.use(express.json);
+app.use(express.json());
 
 // connect transactions route when request is made to URL below
 app.use('/api/v1/transactions', transactions);
