@@ -29,7 +29,7 @@ export const GlobalProvider = ({ children }) => {
     // similar to GET request on Postman 
     async function getTransactions() {
         try {
-            // fetch from API
+            // fetch transaction from API in the backend
             const response = await axios.get('/api/v1/transactions');
 
             // get transaction object from response
@@ -50,18 +50,44 @@ export const GlobalProvider = ({ children }) => {
 
     // payload is any data we want to send to our reducer
     // pass reducer in AppReducer.js file
-    function deleteTransaction(id) {
-        dispatch({
-            type: 'DELETE_TRANSACTION',
-            payload: id
-        });
+    // call transaction on axios delete function and delete from server
+    async function deleteTransaction(id) {
+        try {
+            await axios.delete(`/api/v1/transactions/${id}`);
+
+            dispatch({
+                type: 'DELETE_TRANSACTION',
+                payload: id
+            });
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            })
+        }
+
     }
 
-    function addTransaction(transaction) {
-        dispatch({
-            type: 'ADD_TRANSACTION',
-            payload: transaction
-        });
+    async function addTransaction(transaction) {
+        // define content type to push to DB
+        const config = {
+            'Content-Type': 'application/json'
+        }
+
+        // post transaction and config to DB
+        try {
+            const response = await axios.post('/api/v1/transactions', transaction, config);
+
+            dispatch({
+                type: 'ADD_TRANSACTION',
+                payload: response.data.data
+            });
+        } catch (error) {
+            dispatch({
+                type: 'TRANSACTION_ERROR',
+                payload: error.response.data.error
+            })
+        }
     }
 
 
