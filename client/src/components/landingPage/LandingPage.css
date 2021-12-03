@@ -1,0 +1,30 @@
+body{
+    background-color: purple;
+}
+
+.landingPage-btn{
+    border: none;
+    padding: 15px;
+  margin-left: 208px;
+  margin-bottom: 200px;
+  background-color: black;
+  color: #f28f00;
+  cursor: pointer;
+}
+
+.landingPage-btn:hover{
+    background-color: #f28f00;
+    color: black;
+}
+
+.name{
+    font-size: 30px;
+}
+
+/* h1 {
+    margin-bottom: 300px;
+}
+
+img{
+    margin-bottom: 300px;
+} */

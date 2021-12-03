@@ -1,9 +1,12 @@
+import './header.css'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <h2>
-            Eye on The Money
-        </h2>
+        <Link to="/">
+            <img className="logo" src="/assets/eye-spyTT.png" />
+        </Link>
+
     );
 }
 

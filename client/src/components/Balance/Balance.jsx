@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { GlobalContext } from '../../context/context';
 import { numberWithCommas } from '../../utils/format'
+import './balance.css'
+
 
 import './balance.css'
 
@@ -18,10 +20,10 @@ const Balance = () => {
     const total = amounts.reduce((totalValue, currentItemValue) => (totalValue += currentItemValue), 0).toFixed(2);
 
     return (
-        <>
+        <div className="balance-header">
             <h4>Your Balance</h4>
             <h1>£{numberWithCommas(total)}</h1>
-        </>
+        </div>
     );
 
 
