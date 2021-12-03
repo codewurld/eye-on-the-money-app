@@ -6,7 +6,7 @@ const LandingPage = () => {
     return (
         <div className="page-wrapper" >
             <div>
-                <img src="assets/eye-spyTT.png" alt="eye on the money logo" />
+                <img className="eyeLogo" src="assets/eye-spyTT.png" alt="eye on the money logo" />
             </div>
             <div className="button-wrapper">
                 <Link to="/home">

@@ -21,10 +21,25 @@ body{
     font-size: 30px;
 }
 
-/* h1 {
-    margin-bottom: 300px;
+@media screen and (max-width: 480px) {
+.eyeLogo{
+    /* height: 300px; */
+    /* margin-right: 58px; */
+  width: 80%;
+  margin-left: 30px;
+
 }
 
-img{
-    margin-bottom: 300px;
-} */
+.landingPage-btn{
+    margin-left: 120px;
+}
+}
+    
+/* @media screen and (max-width: 768px){
+    .eyeLogo{
+        height: 70%;
+        margin-right: 118px;
+      
+    }
+}  */
+
